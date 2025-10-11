@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AXONEM — Premium Oversized Tees</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#00D4FF;
+      --bg:#0A0E17;
+      --muted:#bdbdbd;
+      --white:#fff;
+      --card-bg:#0f1113;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Montserrat,system-ui,Arial; margin:0; background:linear-gradient(180deg,#050607 0%,#0d0f11 100%); color:var(--white); -webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,14,23,0.6);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{font-weight:800;letter-spacing:2px;color:var(--white);font-size:20px}
+    .brand span{color:var(--accent)}
+    .nav-right{display:flex;gap:12px;align-items:center}
+    .nav-right a{font-weight:600;font-size:14px;opacity:0.9;text-decoration:none}
+    .cta{background:var(--accent);color:#071017;padding:10px 14px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
+
+    /* Hero */
+    .hero{min-height:60vh;display:flex;align-items:center;padding:120px 0 60px}
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
+    .hero h1{font-size:48px;margin:0 0 12px;letter-spacing:3px}
+    .tag{color:var(--muted);font-weight:300;margin-bottom:18px}
+    .shop-btn{background:transparent;border:2px solid var(--accent);padding:12px 20px;border-radius:999px;color:var(--white);font-weight:700;cursor:pointer}
+
+    /* Products */
+    .products{padding:40px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;overflow:hidden;padding-bottom:16px;border:1px solid rgba(255,255,255,0.03)}
+    .img-wrap{height:420px;background:#0b0b0b;display:flex;align-items:center;justify-content:center}
+    .img-wrap img{max-width:100%;max-height:100%;object-fit:contain}
+    .info{padding:16px}
+    .title{font-weight:700;letter-spacing:1px;margin-bottom:6px}
+    .price{color:var(--accent);font-weight:800;font-size:18px}
+    .actions{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white);cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--accent);color:#071017;border:none}
+
+    /* Combo banner */
+    .combo{margin:30px 0;padding:18px;border-radius:12px;background:linear-gradient(90deg, rgba(0,212,255,0.06), rgba(255,255,255,0.01));display:flex;justify-content:space-between;align-items:center}
+    .combo .txt{font-weight:700}
+
+    /* Modal / Cart */
+    .cart-btn{position:fixed;right:18px;bottom:18px;background:var(--accent);border-radius:50%;width:56px;height:56px;border:none;box-shadow:0 8px 30px rgba(0,212,255,0.12);display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .cart-count{position:absolute;right:4px;top:4px;background:#071017;color:var(--accent);padding:2px 6px;border-radius:999px;font-weight:800;font-size:12px}
+
+    .modal{position:fixed;right:18px;bottom:88px;width:340px;background:#071017;border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 30px 80px rgba(2,6,10,0.8);display:none;z-index:60}
+    .modal h4{margin:0 0 10px}
+    .cart-item{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px solid rgba(255,255,255,0.02)}
+    .cart-item img{width:56px;height:56px;object-fit:cover;border-radius:6px}
+    .cart-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+    .checkout{background:var(--accent);border:none;padding:10px 12px;border-radius:8px;font-weight:800}
+
+    footer{margin-top:40px;padding:40px 0;text-align:center;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .img-wrap{height:320px}
+    }
+    @media (max-width:480px){
+      .hero h1{font-size:32px}
+      .img-wrap{height:260px}
+      .modal{right:10px;left:10px;width:auto}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">AXONEM <span>•</span></div>
+        <div class="nav-right">
+          <a href="#products">Shop</a>
+          <a href="#about">About</a>
+          <button class="cta" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>AXONEM</h1>
+          <div class="tag">Premium oversized T‑shirts — curated streetwear. Minimal. Bold. Limited.</div>
+          <p style="color:var(--muted);max-width:640px">Only oversized tees available. Each design is printed on heavyweight cotton, relaxed fit. Prices start at <strong>₹799</strong>. Combo: any 2 for <strong>₹1499</strong>.</p>
+          <div style="margin-top:18px">
+            <button class="shop-btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Browse Collection</button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center">
+          <!-- small hero product stack -->
+          <div style="width:320px;padding:12px;border-radius:12px;background:linear-gradient(180deg,#0b0d0e,#0b0c0d);border:1px solid rgba(255,255,255,0.03)">
+            <img src="/mnt/data/ATTACK%20ON%20TITAN.png" alt="Attack on Titan" style="width:100%;display:block;border-radius:8px;object-fit:contain"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="products">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h2 style="margin:0">Featured Oversized Tees</h2>
+        <div style="color:var(--muted)">Prices start at <strong>₹799</strong> · Combo: 2 for <strong>₹1499</strong></div>
+      </div>
+
+      <div class="combo" style="margin-top:18px">
+        <div class="txt">Special: Buy any 2 tees for <strong>₹1499</strong> — add 2 items and combo will apply automatically in cart.</div>
+        <div style="font-size:13px;color:var(--muted)">Limited stock • Free shipping over ₹1999</div>
+      </div>
+
+      <div class="grid" style="margin-top:20px">
+        <!-- Card 1 -->
+        <div class="card" data-id="a1" data-name="Ain't Nobody's Fool" data-price="799">
+          <div class="img-wrap"><img src="/mnt/data/AIN%27T%20NOBODY%20FOOL.png" alt="Ain't Nobody's Fool"></div>
+          <div class="info">
+            <div class="title">Ain't Nobody's Fool</div>
+            <div style="color:var(--muted);font-size:13px;margin-bottom:8px">Front + large back print. Oversized fit.</div>
+            <div class="price">₹799</div>
+            <div class="actions">
+              <button class="btn" onclick="openModal('a1')">Quick View</button>
+              <button class="btn primary" onclick="addToCart(this.closest('.card'))">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" data-id="a2" data-name="Aries" data-price="799">
+          <div class="img-wrap"><img src="/mnt/data/ARIES.png" alt="Aries"></div>
+          <div class="info">
+            <div class="title">Aries</div>
+            <div style="color:var(--muted);font-size:13px;margin-bottom:8px">Ornamental ram skull motif. Statement back print.</div>
+            <div class="price">₹799</div>
+            <div class="actions">
+              <button class="btn" onclick="openModal('a2')">Quick View</button>
+              <button class="btn primary" onclick="addToCart(this.closest('.card'))">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" data-id="a3" data-name="Attack on Titan" data-price="799">
+          <div class="img-wrap"><img src="/mnt/data/ATTACK%20ON%20TITAN.png" alt="Attack on Titan"></div>
+          <div class="info">
+            <div class="title">Attack on Titan</div>
+            <div style="color:var(--muted);font-size:13px;margin-bottom:8px">Anime collage — limited run.</div>
+            <div class="price">₹799</div>
+            <div class="actions">
+              <button class="btn" onclick="openModal('a3')">Quick View</button>
+              <button class="btn primary" onclick="addToCart(this.closest('.card'))">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card" data-id="a4" data-name="Banger" data-price="799">
+          <div class="img-wrap"><img src="/mnt/data/BANGER.png" alt="Banger"></div>
+          <div class="info">
+            <div class="title">Banger</div>
+            <div style="color:var(--muted);font-size:13px;margin-bottom:8px">High-impact back print. Heavy cotton.</div>
+            <div class="price">₹799</div>
+            <div class="actions">
+              <button class="btn" onclick="openModal('a4')">Quick View</button>
+              <button class="btn primary" onclick="addToCart(this.closest('.card'))">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer id="about">
+      <div style="max-width:800px;margin:0 auto;color:var(--muted)">
+        <p style="margin-bottom:8px">AXONEM — premium connected fashion. All tees are oversized. Care: cold wash inside out. Returns within 7 days. For collabs & wholesale: <a href="#contact">contact@axonem.co</a></p>
+        <div style="margin-top:12px">Follow: <a href="#">Instagram</a> · <a href="#">Twitter</a></div>
+        <div style="margin-top:18px;font-size:13px;color:#8b8b8b">© 2025 AXONEM. All rights reserved.</div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- cart button + modal -->
+  <button class="cart-btn" id="cartBtn" title="Cart (0)" onclick="toggleCart()">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6H22L20 14H8L6 6Z" stroke="#071017" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="10" cy="20" r="1.6" fill="#071017"/><circle cx="18" cy="20" r="1.6" fill="#071017"/></svg>
+    <div class="cart-count" id="cartCount">0</div>
+  </button>
+
+  <div class="modal" id="cartModal">
+    <h4>Your Cart</h4>
+    <div id="cartList"></div>
+    <div class="cart-footer">
+      <div style="color:var(--muted)">Total: <strong id="cartTotal">₹0</strong></div>
+      <button class="checkout" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Quick view modal (simple) -->
+  <dialog id="quickView" style="border:none;border-radius:12px;padding:0;max-width:900px;background:transparent">
+    <div style="background:#071017;padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);color:var(--white)">
+      <div style="display:flex;gap:14px;align-items:flex-start">
+        <div style="flex:1;min-width:280px"><img id="qImg" src="" alt="" style="width:100%;height:420px;object-fit:contain;border-radius:8px;"/></div>
+        <div style="flex:1;padding:6px 12px">
+          <h3 id="qTitle" style="margin-top:0"></h3>
+          <div id="qDesc" style="color:var(--muted)"></div>
+          <div style="margin-top:12px;font-weight:800;color:var(--accent);font-size:20px" id="qPrice"></div>
+          <div style="margin-top:18px;display:flex;gap:8px">
+            <select id="sizeSelect" style="padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white)">
+              <option>Size: S</option>
+              <option>Size: M</option>
+              <option>Size: L</option>
+              <option>Size: XL</option>
+              <option>Size: XXL</option>
+            </select>
+            <button class="btn primary" id="qAdd">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:right;margin-top:8px"><button class="btn" onclick="document.getElementById('quickView').close()">Close</button></div>
+    </div>
+  </dialog>
+
+  <script>
+    // cart state
+    const cart = [];
+    const cartCountEl = document.getElementById('cartCount');
+    const cartListEl = document.getElementById('cartList');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const cartModal = document.getElementById('cartModal');
+
+    function addToCart(cardEl){
+      const id = cardEl.getAttribute('data-id');
+      const name = cardEl.getAttribute('data-name');
+      const price = Number(cardEl.getAttribute('data-price'));
+      // default size M
+      cart.push({id,name,price,size:'M'});
+      updateCartUI();
+      // flash feedback
+      cardEl.style.boxShadow = '0 8px 30px rgba(0,212,255,0.06)';
+      setTimeout(()=>cardEl.style.boxShadow='none',700);
+    }
+
+    function updateCartUI(){
+      cartCountEl.textContent = cart.length;
+      cartListEl.innerHTML = '';
+      // apply combo: if 2 or more items, apply combo pricing for paired items
+      let total = 0;
+      const items = [...cart];
+      if(items.length>=2){
+        // number of pairs
+        const pairs = Math.floor(items.length/2);
+        total += pairs * 1499;
+        // remaining
+        const rem = items.length - pairs*2;
+        for(let i=0;i<rem;i++) total += items[pairs*2 + i].price;
+      } else {
+        for(const it of items) total += it.price;
+      }
+
+      // list items
+      items.forEach((it,idx)=>{
+        const div = document.createElement('div');
+        div.className='cart-item';
+        div.innerHTML = `<img src="/mnt/data/${encodeURIComponent(it.name.replace(/\s/g,' '))}.png" onerror="this.style.display='none'"/><div style=\"flex:1\"><div style=\"font-weight:700\">${it.name}</div><div style=\"color:var(--muted);font-size:13px\">Size: ${it.size}</div></div><div style=\"font-weight:800;color:var(--accent)\">₹${it.price}</div>`;
+        cartListEl.appendChild(div);
+      });
+
+      cartTotalEl.textContent = '₹' + total;
+      document.getElementById('cartBtn').title = `Cart (${cart.length})`;
+    }
+
+    function toggleCart(){
+      cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function checkout(){
+      if(cart.length===0){ alert('Cart is empty'); return }
+      alert('This is a mock checkout. Total: ' + cartTotalEl.textContent + '\nThank you — AXONEM');
+      // clear
+      cart.length = 0; updateCartUI(); cartModal.style.display='none';
+    }
+
+    // Quick view
+    function openModal(id){
+      const card = document.querySelector(`.card[data-id="${id}"]`);
+      const img = card.querySelector('img').src;
+      const title = card.getAttribute('data-name');
+      const price = card.getAttribute('data-price');
+      document.getElementById('qImg').src = img;
+      document.getElementById('qTitle').textContent = title;
+      document.getElementById('qDesc').textContent = card.querySelector('.info div').textContent || '';
+      document.getElementById('qPrice').textContent = '₹' + price;
+      const dlg = document.getElementById('quickView');
+      dlg.showModal();
+      document.getElementById('qAdd').onclick = function(){ cart.push({id,title,price:Number(price),size:document.getElementById('sizeSelect').value}); updateCartUI(); dlg.close(); };
+    }
+
+    // small usability: close quick view on ESC
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ const dlg=document.getElementById('quickView'); if(dlg.open) dlg.close(); } });
+
+    // init
+    updateCartUI();
+  </script>
+</body>
+</html>
+<div class="product-card">
+  <img src="images/ARIES.png" alt="Aries Oversized T-Shirt">
+  <h3>ARIES Oversized T-Shirt</h3>
+  <p>₹799</p>
+  <button>Add to Cart</button>
+</div>
+axonem/
+├── index.html
+└── images/
+     ├── ARIES.png
+     ├── AIN'T NOBODY FOOL.png
+     ├── ATTACK ON TITAN.png
+     └── BANGER.png
